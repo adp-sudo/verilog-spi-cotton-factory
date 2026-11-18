@@ -38,63 +38,8 @@ Communication uses SPI Mode 0.
 5. The master grants rest only if at least one other machine remains active.
 6. Each slave rests for a fixed duration of 20 clock cycles before resuming operation.
 
-## Scheduling Condition
 
-The system aims to maintain continuous production:
 
-\[
-C_1+C_2+C_3\geq 1
-\]
-
-Where each \(C_i\) represents the cutting status of a slave.
-
-- `1` – Cutting
-- `0` – Resting
-
-## Production Monitoring
-
-The separate testbench monitors:
-
-- Individual slave states.
-- Number of active machines.
-- Individual cotton production.
-- Total cotton production.
-- Violations of the continuous-operation condition.
-
-Total production:
-
-\[
-C_{\text{total}}=C_1+C_2+C_3
-\]
-
-## Project Structure
-
-```text
-verilog-spi-cotton-factory/
-│
-├── code.v
-├── testbench.v
-└── README.md
-```
-
-## Tools Used
-
-- Verilog HDL
-- Icarus Verilog
-
-## Running the Simulation
-
-Compile both Verilog files:
-
-```bash
-iverilog -g2012 -o cotton_sim code.v testbench.v
-```
-
-Run the simulation:
-
-```bash
-vvp cotton_sim
-```
 
 ## Concepts Demonstrated
 
